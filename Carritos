@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace simulacion_estacionamiento
+{
+	class Carritos
+	{
+
+		public Carritos()
+		{
+			Dibujar(new Point(927, 0));
+		}
+		 
+		private void Dibujar(Point puntos)
+		{
+			PictureBox pishur = new PictureBox();
+			switch (new Random().Next(0,6))
+			{
+				case 0:
+					pishur.Image = Properties.Resources.carro1;
+					break;
+				case 1:
+					pishur.Image = Properties.Resources.carro2;
+					break;
+				case 2:
+					pishur.Image = Properties.Resources.carro3;
+					break;
+				case 3:
+					pishur.Image = Properties.Resources.carro61;
+					break;
+				case 4:
+					pishur.Image = Properties.Resources.carro8;
+					break;
+				case 5:
+					pishur.Image = Properties.Resources.carro41;
+					break;
+			}
+			pishur.Location = puntos;
+			pishur.Size = new Size(22, 50);
+			pishur.Name = Thread.CurrentThread.Name;
+			pishur.SizeMode = PictureBoxSizeMode.StretchImage;
+			Métodos.DibujarPicture(pishur);
+			Métodos.MoverPishur("izquierda", pishur, 4, 666);
+		}
+
+
+
+
+
+	}
+}
