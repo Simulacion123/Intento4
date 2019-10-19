@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace simulacion_estacionamiento
+{
+	class clsGenerarRan
+	{
+
+		public static int mRandom(int x, int a, int m, int t, int min, int porcentaje)
+		{
+			double xi = (a * x) % m;
+			for (int i = 0; i < 100; i++)
+			{
+				xi = (a * xi) % m;
+
+			}
+			double ri = xi / m - 1;
+			ri = Math.Abs(ri);
+			try
+			{
+				xi = Convert.ToDouble(ri.ToString().Substring(2, 2));
+				double PT = ((t * 60) + min) / porcentaje;
+				xi = xi * Convert.ToDouble("0." + PT);
+
+
+			}
+			catch (Exception)
+			{
+				mRandom(x, a, m, t, min, porcentaje);
+				
+			}
+			return (int)xi;
+		}
+		//[]{}<>
+		
+	}
+}
